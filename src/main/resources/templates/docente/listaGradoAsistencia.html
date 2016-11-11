@@ -199,13 +199,13 @@
                                                                 </div>
                                                                     <div class="portlet-body form">
                                                                         <!-- BEGIN FORM-->
-                                                                        <form action="#" class="form-horizontal">
+                                                                        <form th:action="@{/asistenciaReporte}" class="form-horizontal" method="get">
                                                                             <div class="form-body">                                                                   
                                                                                    <div class="form-group">
                                                                                     <label class="col-md-3 control-label">Grados</label>
                                                                                     <div th:if="${not #lists.isEmpty(grados)}">
                                                                                     <div class="col-md-4">
-                                                                                        <select class="form-control">
+                                                                                        <select class="form-control" name="id">
                                                                                             <option th:each="g : ${grados}" th:value="${g.idgrado}" th:text="${g.descripciongrado}"></option>
                                                                                         </select>
                                                                                     </div>

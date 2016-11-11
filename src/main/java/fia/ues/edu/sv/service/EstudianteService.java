@@ -22,8 +22,14 @@ public class EstudianteService {
         return estudianteRepository.findByGrado(grado);
     }
 
+
     @Transactional
-    public List<Estudiante> listarTodos(){
+    public List<Estudiante> listarTodos1(){
         return estudianteRepository.findAll();
+    }
+
+    @Transactional
+    public List<Estudiante> listarTodos(int idGrado){
+        return estudianteRepository.queryByGrado(idGrado);
     }
 }

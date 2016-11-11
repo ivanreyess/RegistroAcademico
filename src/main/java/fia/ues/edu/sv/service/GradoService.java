@@ -23,7 +23,12 @@ public class GradoService {
     }
 
     @Transactional
-    public List<Grado> listarPorDocente(Docente docente){
+    public List<Grado> listarPorDocente1(Docente docente){
         return gradoRepository.findBydocentes(docente);
+    }
+
+    @Transactional
+    public List<Grado> listarporDocente(int idDocente){
+        return gradoRepository.queryByDocente(idDocente);
     }
 }
