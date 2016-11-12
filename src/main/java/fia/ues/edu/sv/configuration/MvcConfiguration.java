@@ -16,10 +16,15 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
         registry.addViewController("/table").setViewName("table_datatables_colreorder");
         registry.addViewController("/listaGradoAsistencia").setViewName("/docente/listaGradoAsistencia");
         registry.addViewController("/asistenciaReporte").setViewName("/docente/asistenciaReporte");
-        registry.addViewController("/recuperacion").setViewName("/docente/recuperacionReporte");
+        registry.addViewController("/recuperacionReporte").setViewName("/docente/recuperacionReporte");
         registry.addViewController("/docente").setViewName("/docente/docente");
         registry.addViewController("/coordinador").setViewName("/coordinador/coordinador");
         registry.addViewController("/director").setViewName("/director/director");
         //registry.addViewController("/condicionadosReporte").setViewName("/docente/condicionadosReportes");
+        registry.addViewController("/listaAlumnoGrado").setViewName("/docente/listaAlumnoGrado");
+        registry.addViewController("/listaAlumnoConducta").setViewName("/docente/listaAlumnoConducta");
+        registry.addViewController("/listaAlumnoRecuperacion").setViewName("/docente/listaAlumnoRecuperacion");
+
+
     }
 }
