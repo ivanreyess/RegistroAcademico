@@ -29,6 +29,11 @@ public class EstudianteService {
     }
 
     @Transactional
+    public void guardar(Estudiante estudiante){
+        estudianteRepository.saveAndFlush(estudiante);
+    }
+
+    @Transactional
     public List<Estudiante> listarTodos(int idGrado){
         return estudianteRepository.queryByGrado(idGrado);
     }

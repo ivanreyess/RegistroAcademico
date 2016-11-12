@@ -15,7 +15,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!-->
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
     <!--<![endif]-->
     <!-- BEGIN HEAD -->
 
@@ -60,8 +60,16 @@ License: You must have a valid license purchased only from themeforest(the above
         <!-- BEGIN LOGIN -->
         <div class="content">
             <!-- BEGIN LOGIN FORM -->
-            <form class="login-form" action="index.html" method="post">
+            <form class="login-form" th:action="@{/login}" method="post">
                 <h3 class="form-title font-green">Registro Academico</h3>
+                <div th:if="${param.error}" class="alert alert-danger display-hide">
+                    <button class="close" data-close="alert"></button>
+                    <span>Usuario o Contraseña no validos </span>
+                </div>
+                <div th:if="${param.logout}" class="alert alert-danger display-hide">
+                    <button class="close" data-close="alert"></button>
+                    <span>Ha cerrado sesion </span>
+                </div>
                 <div class="alert alert-danger display-hide">
                     <button class="close" data-close="alert"></button>
                     <span>Ingrese usuario y contraseña </span>
