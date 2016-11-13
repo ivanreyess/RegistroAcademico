@@ -1,4 +1,4 @@
-package fia.ues.edu.sv.configuration;
+package fia.ues.edu.sv.Security;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
