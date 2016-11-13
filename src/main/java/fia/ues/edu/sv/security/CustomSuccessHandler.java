@@ -1,4 +1,4 @@
-package fia.ues.edu.sv.Security;
+package fia.ues.edu.sv.security;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -63,21 +63,21 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
     }
 
     private boolean isDocente(List<String> roles) {
-        if (roles.contains("ROLE_Docente")) {
+        if (roles.contains("Docente")) {
             return true;
         }
         return false;
     }
 
     private boolean isDirector(List<String> roles) {
-        if (roles.contains("ROLE_Director")) {
+        if (roles.contains("Directora")) {
             return true;
         }
         return false;
     }
 
     private boolean isCoordinador(List<String> roles) {
-        if (roles.contains("ROLE_Coordinador")) {
+        if (roles.contains("Coordinador")) {
             return true;
         }
         return false;

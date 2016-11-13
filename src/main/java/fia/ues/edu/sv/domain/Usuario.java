@@ -20,7 +20,7 @@ import javax.persistence.Table;
 @Table(name="usuario"
     ,schema="public"
 )
-public class Usuario  implements java.io.Serializable {
+public class  Usuario  implements java.io.Serializable {
 
 
      private int idusuario;
@@ -56,7 +56,7 @@ public class Usuario  implements java.io.Serializable {
         this.idusuario = idusuario;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="idrol")
     public Rol getRol() {
         return this.rol;
