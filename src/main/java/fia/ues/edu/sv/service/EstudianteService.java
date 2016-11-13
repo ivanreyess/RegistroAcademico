@@ -2,6 +2,7 @@ package fia.ues.edu.sv.service;
 
 import fia.ues.edu.sv.domain.Estudiante;
 import fia.ues.edu.sv.domain.Grado;
+import fia.ues.edu.sv.dto.EstudianteAsistenciaDTO;
 import fia.ues.edu.sv.repository.EstudianteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

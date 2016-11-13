@@ -2,6 +2,8 @@ package fia.ues.edu.sv.controller;
 
 import fia.ues.edu.sv.service.EstudianteService;
 import fia.ues.edu.sv.service.GradoService;
+import fia.ues.edu.sv.service.NotaService;
+import fia.ues.edu.sv.service.PeriodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,17 +23,23 @@ public class AsistenciaController {
     @Autowired
     EstudianteService estudianteService;
 
+    @Autowired
+    PeriodoService periodoService;
+
+    @Autowired
+    NotaService notaService;
+
     @RequestMapping("/listaGradoAsistencia")
     public String listarGrado(Model model){
+        model.addAttribute("grados",gradoService.listarporDocente(4));
+        model.addAttribute("periodos",periodoService.listarTodos());
 
-       // model.addAttribute("grados",gradoService.listarTodos());
-        model.addAttribute("grados",gradoService.listarporDocente(1));
         return "/docente/listaGradoAsistencia";
     }
 
     @RequestMapping("/asistenciaReporte")
-    public String asistenciaReporte(@RequestParam Integer id, Model model){
-        model.addAttribute("estudiantes",estudianteService.listarTodos(id));
+    public String asistenciaReporte(@RequestParam Integer grado, @RequestParam Integer periodo, Model model){
+       model.addAttribute("estudiantes",notaService.listaAsistencia(grado,periodo));
         return "/docente/asistenciaReporte";
     }
 }

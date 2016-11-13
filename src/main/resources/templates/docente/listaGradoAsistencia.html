@@ -199,14 +199,25 @@
                                 </div>
                                 <div class="portlet-body form">
                                     <!-- BEGIN FORM-->
-                                    <form th:action="@{/alumnoGradoReporte}" class="form-horizontal" method="get">
+                                    <form th:action="@{/asistenciaReporte}" class="form-horizontal" method="get">
                                         <div class="form-body">
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label">Grados</label>
+                                                <label class="col-md-3 control-label">Grado</label>
                                                 <div th:if="${not #lists.isEmpty(grados)}">
                                                     <div class="col-md-4">
-                                                        <select class="form-control" name="id">
+                                                        <select class="form-control" name="grado">
                                                             <option th:each="g : ${grados}" th:value="${g.idgrado}" th:text="${g.descripciongrado}"></option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Periodo</label>
+                                                <div th:if="${not #lists.isEmpty(periodos)}">
+                                                    <div class="col-md-4">
+                                                        <select class="form-control" name="periodo">
+                                                            <option th:each="p : ${periodos}" th:value="${p.idperiodo}" th:text="${p.mes + ' ' +
+                                                             p.ano + ' Periodo ' + #numbers.formatInteger(p.numeroperiodo,1)}"></option>
                                                         </select>
                                                     </div>
                                                 </div>

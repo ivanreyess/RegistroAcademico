@@ -170,7 +170,7 @@
                                 <div class="container">
                                     <!-- BEGIN PAGE TITLE -->
                                     <div class="page-title">
-                                        <h1>Lista de asistencia </h1>
+                                        <h1>Notas de asistencia </h1>
                                     </div>
                                     <!-- END PAGE TITLE -->
                                     <!-- BEGIN PAGE TOOLBAR -->
@@ -208,22 +208,13 @@
                                                                 <tr>
                                                                     <th>Nombres</th>
                                                                     <th>Apellidos</th>
-                                                                    <th>Lun</th>
-                                                                    <th>Mar</th>
-                                                                    <th>Mie</th>
-                                                                    <th>Jue</th>
-                                                                    <th>Vie</th>
-                                                                </tr>
+                                                                    <th>Asistencia</th>                                                                                                                                   </tr>
                                                             </thead>
                                                             <tbody>
                                                                 <tr th:each="e : ${estudiantes}">
-                                                                    <td th:text="${e.nombreestudiante}"></td>
-                                                                    <td th:text="${e.apelllidosestudiante}"></td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td></td>
+                                                                    <td th:text="${e.estudiante.nombreestudiante}"></td>
+                                                                    <td th:text="${e.estudiante.apelllidosestudiante}"></td>
+                                                                    <td th:text="${e.calificacion}"></td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
