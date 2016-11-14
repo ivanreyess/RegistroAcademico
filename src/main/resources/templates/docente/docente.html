@@ -3,7 +3,10 @@
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!-->
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
     <!--<![endif]-->
     <!-- BEGIN HEAD -->
 
@@ -69,17 +72,24 @@
                                         <li class="dropdown dropdown-user dropdown-dark">
                                             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                                 <img alt="" class="img-circle" src="../assets/layouts/layout3/img/user-male-circle-blue-512.png"/>
-                                                <span class="username username-hide-mobile">Marcos</span>
+                                                <span class="username username-hide-mobile" sec:authentication="name">Marcos</span>
                                             </a>
                                             <ul class="dropdown-menu dropdown-menu-default">
                                                 <li>
-                                                    <a href="page_user_profile_1.html">
-                                                        <i class="icon-user"></i> My Profile </a>
+                                                    <a href="javascript:{}">
+                                                         Ociones </a>
                                                 </li>
 
                                                 <li>
-                                                    <a href="page_user_login_1.html">
-                                                        <i class="icon-key"></i> Cerrar Sesión </a>
+                                                    <!--<a th:href="@{/logout}">
+                                                        <i class="icon-key" ></i> Cerrar Sesión </a>-->
+                                                    <div sec:authorize="isAuthenticated()">
+                                                    <form   id="frmlogout" th:action="@{/logout}" method="post">
+                                                        <a href="javascript:{}" onclick="document.getElementById('frmlogout').submit(); return false;">
+                                                            <i class="icon-key" ></i> Cerrar Sesión
+                                                        </a>
+                                                    </form>
+                                                    </div>
                                                 </li>
                                             </ul>
                                         </li>
