@@ -102,78 +102,10 @@
                             <!-- BEGIN MEGA MENU -->
                             <!-- DOC: Apply "hor-menu-light" class after the "hor-menu" class below to have a horizontal menu with white background -->
                             <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
-                            <div class="hor-menu  ">
-                                <ul class="nav navbar-nav">
-                                    <li class="menu-dropdown classic-menu-dropdown ">
-                                        <a href="coordinador"> Inicio
-                                                <span class="arrow"></span>
-                                            </a>
-                                    </li>
-                                    <li class="menu-dropdown mega-menu-dropdown  ">
-                                        <a href="javascript:;"> Reportes
-                                                <span class="arrow"></span>
-                                            </a>
-                                        <ul class="dropdown-menu" style="min-width: 400px">
-                                            <li>
-                                                <div class="mega-menu-content">
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <ul class="mega-menu-submenu">
-                                                                <li>
-                                                                    <h3>Reportes Tacticos</h3>
-                                                                </li>
-                                                                <li class=" ">
-                                                                    <a href="#" class="nav-link  "> Reporte de alumnos por grado </a>
-                                                                </li>
-                                                                <li class=" ">
-                                                                    <a href="#" class="nav-link  "> Reporte de conducta </a>
-                                                                </li>
-                                                                <li class=" ">
-                                                                    <a href="#" class="nav-link  "> Reporte de asistencia </a>
-                                                                </li>
-                                                                <li class=" ">
-                                                                    <a href="#" class="nav-link  "> Reporte Examen de Recuperacion</a>
-                                                                </li>
-                                                                <li class=" ">
-                                                                    <a href="#" class="nav-link  ">  Reporte de Alumnos Condicionados</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
+                            <!-- Insertando el menu  -->
+                            <div th:replace="/coordinador/menuCoordinador :: menu">   </div>
 
-                                                        <div class="col-md-6">
-                                                            <ul class="mega-menu-submenu">
 
-                                                                <li class=" ">
-                                                                    <a href="/listaAlumnoExonerado" class="nav-link  "> Reporte de exonerados </a>
-                                                                </li>
-                                                                <li class=" ">
-                                                                    <a href="#" class="nav-link  "> Reporte de excelencia academica </a>
-                                                                </li>
-                                                                <li class=" ">
-                                                                    <a href="#" class="nav-link  "> Reporte de rendimiento de materia </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-dropdown classic-menu-dropdown">
-                                        <a href="javascript:;"> Notas
-                                                <span class="arrow"></span>
-                                            </a>
-                                        <ul class="dropdown-menu pull-left">
-                                            <li class=" ">
-                                                <a href="layout_mega_menu_light.html" class="nav-link  "> Ingreso de Notas </a>
-                                            </li>
-                                            <li class=" ">
-                                                <a href="layout_top_bar_light.html" class="nav-link  "> Modificar Nota </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
                             <!-- END MEGA MENU -->
                         </div>
                     </div>
