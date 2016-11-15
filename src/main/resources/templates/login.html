@@ -69,11 +69,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <button class="close" data-close="alert"></button>
                     <span>Usuario o Contraseña no validos </span>
                 </div>
-                <div th:if="${param.logout}">Invalid user name and password.</div>
-                <div th:if="${param.logout}" class="alert alert-danger display-hide">
-                    <button class="close" data-close="alert"></button>
-                    <span>Ha cerrado sesion </span>
-                </div>
+                <div th:if="${param.logout}">Ha cerrado sesion</div>
                 <div class="alert alert-danger display-hide">
                     <button class="close" data-close="alert"></button>
                     <span>Ingrese usuario y contraseña </span>

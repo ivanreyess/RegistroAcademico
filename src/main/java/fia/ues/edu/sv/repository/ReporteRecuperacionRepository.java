@@ -10,5 +10,5 @@ import java.util.List;
  */
 public interface ReporteRecuperacionRepository extends JpaRepository<ReporteRecuperacion,Integer>{
 
-    List<ReporteRecuperacion> findBygrado(String grado);
+    List<ReporteRecuperacion> findBygrado(int grado);
 }

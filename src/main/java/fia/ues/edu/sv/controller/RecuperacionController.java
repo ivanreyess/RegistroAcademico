@@ -17,7 +17,7 @@ public class RecuperacionController {
 
     @RequestMapping("/recuperacionReporte")
     public String reporteRecuperacion(Model model){
-        model.addAttribute("recuperacion",reporteRecuperacionService.listarPorGrado("2"));
+        model.addAttribute("recuperacion",reporteRecuperacionService.listarPorGrado(3));
         return "/docente/recuperacionReporte";
     }
 }

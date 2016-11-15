@@ -18,7 +18,7 @@ public class ReporteRecuperacionService {
     ReporteRecuperacionRepository reporteRecuperacionRepository;
 
     @Transactional
-    public List<ReporteRecuperacion> listarPorGrado(String idgrado){
+    public List<ReporteRecuperacion> listarPorGrado(int idgrado){
         return reporteRecuperacionRepository.findBygrado(idgrado);
     }
 

@@ -4,48 +4,80 @@ import org.hibernate.annotations.Subselect;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.math.BigInteger;
 
 /**
  * Created by ivan on 11-13-16.
  */
 @Entity
-@Subselect("SELECT \n" +
-        "\tGRADO,\n" +
+@Subselect("SELECT  \n" +
+        "\n" +
+        "\tIDGRADO,\n" +
+        "\n" +
         "\tDESCRIPCIONGRADO,\n" +
+        "\n" +
         "\tTRUNC(AVG(NOTAFINAL_MATERIA),2) AS NF_PERIODO_CUATRO,\n" +
+        "\n" +
         "\tNOMBREESTUDIANTE || ' ' ||APELLLIDOSESTUDIANTE AS ESTUDIANTE,\n" +
+        "\n" +
         "\tIDESTUDIANTE,\n" +
+        "\n" +
         "\tNOMBREMATERIA AS MATERIA_REPROBADA\n" +
+        "\n" +
         "\t\n" +
+        "\n" +
         "FROM (\n" +
+        "\n" +
         "--NOTAS FINALES POR GRADO Y MATERIA \n" +
+        "\n" +
         "SELECT \n" +
+        "\n" +
         "\tGRADO,\n" +
+        "\n" +
         "\tDESCRIPCIONGRADO,\n" +
+        "\n" +
         "\tE.IDGRADO,\t\n" +
+        "\n" +
         "\tN.IDESTUDIANTE,\n" +
+        "\n" +
         "\tNOMBREESTUDIANTE,\n" +
+        "\n" +
         "\tAPELLLIDOSESTUDIANTE,\n" +
+        "\n" +
         "\tNUMEROPERIODO,\n" +
+        "\n" +
         "\tN.IDPERIODO,\n" +
+        "\n" +
         "\tN.IDMATERIA,\n" +
+        "\n" +
         "\tNOMBREMATERIA,\n" +
+        "\n" +
         "\tTRUNC(SUM(CALIFICACION*PONDERACION),2) AS NOTAFINAL_MATERIA\n" +
+        "\n" +
         "FROM NOTA  N \n" +
+        "\n" +
         "JOIN ACTIVIDADES A ON A.IDACTIVIDADES=N.IDACTIVIDADES\n" +
+        "\n" +
         "JOIN MATERIA M ON M.IDMATERIA=N.IDMATERIA\n" +
+        "\n" +
         "JOIN PERIODO P ON N.IDPERIODO=P.IDPERIODO\n" +
+        "\n" +
         "JOIN ESTUDIANTE E ON E.IDESTUDIANTE=N.IDESTUDIANTE\n" +
+        "\n" +
         "JOIN GRADO G ON G.IDGRADO=E.IDGRADO\n" +
+        "\n" +
         "WHERE NUMEROPERIODO=4\n" +
+        "\n" +
         "GROUP BY N.IDMATERIA, N.IDPERIODO,M.NOMBREMATERIA,NUMEROPERIODO,N.IDESTUDIANTE,E.IDGRADO,NOMBREESTUDIANTE,APELLLIDOSESTUDIANTE,GRADO,DESCRIPCIONGRADO\n" +
+        "\n" +
         "ORDER BY IDPERIODO,N.IDESTUDIANTE ASC\n" +
+        "\n" +
         ") A\n" +
-        "GROUP BY NOMBREESTUDIANTE||' ' ||APELLLIDOSESTUDIANTE,GRADO,NOMBREMATERIA,DESCRIPCIONGRADO,IDESTUDIANTE\n" +
+        "\n" +
+        "GROUP BY NOMBREESTUDIANTE||' ' ||APELLLIDOSESTUDIANTE,IDGRADO,NOMBREMATERIA,DESCRIPCIONGRADO,IDESTUDIANTE\n" +
+        "\n" +
         "HAVING TRUNC(AVG(NOTAFINAL_MATERIA),2) <6.0")
 public class ReporteRecuperacion {
-    private String grado;
+    private int grado;
     private String descripciongrado;
     private BigDecimal nfPeriodoCuatro;
     private String estudiante;
@@ -53,12 +85,12 @@ public class ReporteRecuperacion {
     private String materiaReprobada;
 
     @Basic
-    @Column(name = "grado")
-    public String getGrado() {
+    @Column(name = "idgrado")
+    public int getGrado() {
         return grado;
     }
 
-    public void setGrado(String grado) {
+    public void setGrado(int grado) {
         this.grado = grado;
     }
 
@@ -113,35 +145,8 @@ public class ReporteRecuperacion {
         this.materiaReprobada = materiaReprobada;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
 
-        ReporteRecuperacion that = (ReporteRecuperacion) o;
 
-        if (grado != null ? !grado.equals(that.grado) : that.grado != null) return false;
-        if (descripciongrado != null ? !descripciongrado.equals(that.descripciongrado) : that.descripciongrado != null)
-            return false;
-        if (nfPeriodoCuatro != null ? !nfPeriodoCuatro.equals(that.nfPeriodoCuatro) : that.nfPeriodoCuatro != null)
-            return false;
-        if (estudiante != null ? !estudiante.equals(that.estudiante) : that.estudiante != null) return false;
-        if (idestudiante != null ? !idestudiante.equals(that.idestudiante) : that.idestudiante != null) return false;
-        if (materiaReprobada != null ? !materiaReprobada.equals(that.materiaReprobada) : that.materiaReprobada != null)
-            return false;
 
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = grado != null ? grado.hashCode() : 0;
-        result = 31 * result + (descripciongrado != null ? descripciongrado.hashCode() : 0);
-        result = 31 * result + (nfPeriodoCuatro != null ? nfPeriodoCuatro.hashCode() : 0);
-        result = 31 * result + (estudiante != null ? estudiante.hashCode() : 0);
-        result = 31 * result + (idestudiante != null ? idestudiante.hashCode() : 0);
-        result = 31 * result + (materiaReprobada != null ? materiaReprobada.hashCode() : 0);
-        return result;
-    }
 }
 

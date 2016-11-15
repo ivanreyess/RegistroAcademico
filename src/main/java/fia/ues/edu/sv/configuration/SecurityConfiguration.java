@@ -33,7 +33,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                     .permitAll().successHandler(customSuccessHandler)
                     .and()
                     .logout()
-                    .logoutSuccessUrl("/login?logut")
+                    .logoutSuccessUrl("/login?logout")
                     .permitAll();
 
 
@@ -45,5 +45,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
         auth.inMemoryAuthentication().withUser("director").password("password").roles("Director");
         auth.inMemoryAuthentication().withUser("coordinador").password("password").roles("Coordinador");*/
         auth.userDetailsService(userDetailsService);
+
     }
 }
