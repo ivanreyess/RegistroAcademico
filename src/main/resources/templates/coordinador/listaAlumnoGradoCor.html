@@ -9,7 +9,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Reporte de exonerados</title>
+    <title>Listado de alumnos</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="" name="description" />
@@ -44,7 +44,7 @@
                     <div class="container">
                         <!-- BEGIN LOGO -->
                         <div class="page-logo">
-                            <a href="login">
+                            <a href="/docente">
                                 <img src="../assets/layouts/layout3/img/logo-default.jpg" alt="logo" class="logo-default"/>
                             </a>
                         </div>
@@ -101,7 +101,6 @@
                         <!-- BEGIN MEGA MENU -->
                         <!-- DOC: Apply "hor-menu-light" class after the "hor-menu" class below to have a horizontal menu with white background -->
                         <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
-                        <!-- insertando el menu  -->
                         <div th:replace="/coordinador/menuCoordinador :: menu">   </div>
                         <!-- END MEGA MENU -->
                     </div>
@@ -123,7 +122,7 @@
                         <div class="container">
                             <!-- BEGIN PAGE TITLE -->
                             <div class="page-title">
-                                <h1>Reporte de Excelencia Académica </h1>
+                                <h1>Listado de alumnos </h1>
                             </div>
                             <!-- END PAGE TITLE -->
                             <!-- BEGIN PAGE TOOLBAR -->
@@ -142,7 +141,7 @@
                                     <i class="fa fa-circle"></i>
                                 </li>
                                 <li>
-                                    <span>Reporte de Execelncia Académica</span>
+                                    <span>Listado de alumnos</span>
                                 </li>
                             </ul>
                             <!-- END PAGE BREADCRUMBS -->
@@ -151,31 +150,20 @@
                                 <div class="portlet-title">
                                     <div class="caption">
                                         <i class="icon-list font-red-sunglo"></i>
-                                        <span class="caption-subject font-red-sunglo bold uppercase">Exonerados</span>
+                                        <span class="caption-subject font-red-sunglo bold uppercase">Listado de alumnos</span>
                                         <span class="caption-helper">Seleccione un grado</span>
                                     </div>
                                 </div>
                                 <div class="portlet-body form">
                                     <!-- BEGIN FORM-->
-
-                                    <form th:action="@{/exoneracionReporte}" class="form-horizontal" method="get">
+                                    <form th:action="@{/alumnoGradoReporte}" class="form-horizontal" method="get">
                                         <div class="form-body">
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label">Grados</label>
-                                                <div th:if="${not #lists.isEmpty(lgrados)}">
+                                                <div th:if="${not #lists.isEmpty(grados)}">
                                                     <div class="col-md-4">
                                                         <select class="form-control" name="id">
-                                                            <option th:each="g : ${lgrados}" th:value="${g.idgrado}" th:text="${g.descripciongrado}"></option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label">Materia</label>
-                                                <div th:if="${not #lists.isEmpty(materia)}">
-                                                    <div class="col-md-4">
-                                                        <select class="form-control" name="materia">
-                                                            <option th:each="m : ${materia}" th:value="${m.nombremateria}" th:text="${m.nombremateria}"></option>
+                                                            <option th:each="g : ${grados}" th:value="${g.idgrado}" th:text="${g.descripciongrado}"></option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -190,8 +178,6 @@
                                             </div>
                                         </div>
                                     </form>
-
-
                                     <!-- END FORM-->
                                 </div>
                             </div>

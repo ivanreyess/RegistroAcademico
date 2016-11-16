@@ -1,8 +1,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<div  th:fragment="menu" class="hor-menu  ">
+<div th:fragment="menu" class="hor-menu  ">
     <ul class="nav navbar-nav">
         <li class="menu-dropdown classic-menu-dropdown ">
-            <a href="coordinador"> Inicio
+            <a href="director"> Inicio
                 <span class="arrow"></span>
             </a>
         </li>
@@ -10,44 +10,59 @@
             <a href="javascript:;"> Reportes
                 <span class="arrow"></span>
             </a>
-            <ul class="dropdown-menu" style="min-width: 400px">
+            <ul class="dropdown-menu" style="min-width: 710px">
                 <li>
                     <div class="mega-menu-content">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <ul class="mega-menu-submenu">
                                     <li>
-                                        <h3>Reportes Tacticos</h3>
+                                        <h3>Reportes Operativos</h3>
                                     </li>
                                     <li class=" ">
-                                        <a href="/listaAlumnoGradoCor" class="nav-link  "> Reporte de alumnos por grado </a>
+                                        <a href="/listaAlumnoGradoDir" class="nav-link  "> Reporte de alumnos por grado </a>
                                     </li>
                                     <li class=" ">
-                                        <a href="/listaAlumnoConductaCor" class="nav-link  "> Reporte de conducta </a>
+                                        <a href="/listaAlumnoConductaDir" class="nav-link  "> Reporte de conducta </a>
                                     </li>
                                     <li class=" ">
-                                        <a href="/listaGradoAsistenciaCor" class="nav-link  "> Reporte de asistencia </a>
+                                        <a href="/listaGradoAsistenciaDir" class="nav-link  "> Reporte de asistencia </a>
                                     </li>
                                     <li class=" ">
-                                        <a href="/listaAlumnoRecuperacionCor" class="nav-link  "> Reporte Examen de Recuperacion</a>
+                                        <a href="/listaAlumnoRecuperacionDir" class="nav-link  "> Reporte Examen de Recuperacion</a>
                                     </li>
                                     <li class=" ">
-                                        <a href="/listaAlumnoCondicionadoCor" class="nav-link  ">  Reporte de Alumnos Condicionados</a>
+                                        <a href="/listaAlumnoCondicionadoDir" class="nav-link  ">  Reporte de Alumnos Condicionados</a>
                                     </li>
                                 </ul>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <ul class="mega-menu-submenu">
-
-                                    <li class=" ">
-                                        <a href="/listaAlumnoExonerado" class="nav-link  "> Reporte de exonerados </a>
+                                    <li>
+                                        <h3>Reportes Tácticos</h3>
                                     </li>
                                     <li class=" ">
-                                        <a href="/listaAlumnoExcelencia" class="nav-link  "> Reporte de excelencia academica </a>
+                                        <a href="/listaAlumnoExoneradoDir" class="nav-link  "> Reporte de exonerados </a>
                                     </li>
                                     <li class=" ">
-                                        <a href="/listaRendimientoMateria" class="nav-link  "> Reporte de rendimiento de materia </a>
+                                        <a href="/listaAlumnoExcelenciaDir" class="nav-link  "> Reporte de excelencia academica </a>
+                                    </li>
+                                    <li class=" ">
+                                        <a href="/listaRendimientoMateriaDir" class="nav-link  "> Reporte de rendimiento de materia </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <ul class="mega-menu-submenu">
+                                    <li>
+                                        <h3>Reportes Estratégicos</h3>
+                                    </li>
+                                    <li class=" ">
+                                        <a href="#" class="nav-link  "> Reporte de alumnos aprobados </a>
+                                    </li>
+                                    <li class=" ">
+                                        <a href="#" class="nav-link  "> Reporte de alumnos reprobados </a>
                                     </li>
                                 </ul>
                             </div>

@@ -25,8 +25,22 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
         registry.addViewController("/listaAlumnoConducta").setViewName("/docente/listaAlumnoConducta");
         registry.addViewController("/listaAlumnoRecuperacion").setViewName("/docente/listaAlumnoRecuperacion");
         registry.addViewController("/listaAlumnoExonerado").setViewName("/coordinador/listaAlumnoExonerado");
+        registry.addViewController("/listaRendimientoMateria").setViewName("/coordinador/listaRendimientoMateria");
         registry.addViewController("/listaAlumnoExcelencia").setViewName("/coordinador/listaAlumnoExcelencia");
+        registry.addViewController("/listaAlumnoGradoCor").setViewName("/coordinador/listaAlumnoGradoCor");
+        registry.addViewController("/listaAlumnoConductaCor").setViewName("/coordinador/listaAlumnoConductaCor");
+        registry.addViewController("/listaAlumnoRecuperacionCor").setViewName("/coordinador/listaAlumnoRecuperacionCor");
+        registry.addViewController("/listaAlumnoCondicionadoCor").setViewName("/coordinador/listaAlumnoCondicionadoCor");
+        registry.addViewController("/listaGradoAsistenciaCor").setViewName("/coordinador/listaGradoAsistenciaCor");
 
+        registry.addViewController("/listaAlumnoExoneradoDir").setViewName("/director/listaAlumnoExoneradoDir");
+        registry.addViewController("/listaRendimientoMateriaDir").setViewName("/director/listaRendimientoMateriaDir");
+        registry.addViewController("/listaAlumnoExcelenciaDir").setViewName("/director/listaAlumnoExcelenciaDir");
+        registry.addViewController("/listaAlumnoGradoDir").setViewName("/director/listaAlumnoGradoDir");
+        registry.addViewController("/listaAlumnoConductaDir").setViewName("/director/listaAlumnoConductaDir");
+        registry.addViewController("/listaAlumnoRecuperacionDir").setViewName("/director/listaAlumnoRecuperacionDir");
+        registry.addViewController("/listaAlumnoCondicionadoDir").setViewName("/director/listaAlumnoCondicionadoDir");
+        registry.addViewController("/listaGradoAsistenciaDir").setViewName("/director/listaGradoAsistenciaDir");
 
     }
 }
