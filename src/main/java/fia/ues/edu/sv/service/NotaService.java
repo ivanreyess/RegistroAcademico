@@ -20,4 +20,9 @@ public class NotaService {
     public List<Nota> listaAsistencia (int idgrado, int idperiodo){
         return notaRepository.queryByEstudianteAsistencia(idgrado,idperiodo);
     }
+
+    @Transactional
+    public List<Nota> listaConducta(int idgrado, int idperiodo){
+        return notaRepository.queryByEstudianteConducta(idgrado,idperiodo);
+    }
 }

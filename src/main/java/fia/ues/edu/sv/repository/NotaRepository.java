@@ -23,4 +23,16 @@ public interface NotaRepository extends JpaRepository<Nota, Integer> {
             "AND E.IDGRADO = ?1 \n" +
             "AND P .IDPERIODO = ?2 ",nativeQuery = true)
     List<Nota> queryByEstudianteAsistencia(int idgrado, int idperiodo);
+
+
+    @Query(value = "SELECT  \n" +
+            "*\n" +
+            "FROM NOTA N\n" +
+            "JOIN ESTUDIANTE E ON N.IDESTUDIANTE=E.IDESTUDIANTE\n" +
+            "JOIN PERIODO P ON P.IDPERIODO=N.IDPERIODO\n" +
+            "WHERE IDGRADO=?1 AND P.IDPERIODO=?2 \n" +
+            "AND IDMATERIA=14 \n" +
+            "ORDER BY NOMBREESTUDIANTE||' '||APELLLIDOSESTUDIANTE ASC",nativeQuery = true)
+    List<Nota> queryByEstudianteConducta(int idgrado, int idperiodo);
+
 }

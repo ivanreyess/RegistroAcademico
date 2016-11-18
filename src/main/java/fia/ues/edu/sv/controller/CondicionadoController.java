@@ -2,10 +2,12 @@ package fia.ues.edu.sv.controller;
 
 import fia.ues.edu.sv.service.EstudianteService;
 import fia.ues.edu.sv.service.GradoService;
+import fia.ues.edu.sv.service.ReporteCondicionadoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Created by ivan on 11-11-16.
@@ -19,9 +21,12 @@ public class CondicionadoController {
     @Autowired
     GradoService gradoService;
 
-    @RequestMapping("/condicionadoReporte")
-    public String listarCondicionados(Model model){
-        model.addAttribute("listaCondicionados",estudianteService.listarTodos1());
+    @Autowired
+    ReporteCondicionadoService reporteCondicionadoService;
+
+    @RequestMapping("/condicionadosReportes")
+    public String listarCondicionados(Model model, @RequestParam Integer grado){
+        model.addAttribute("estudiantes",reporteCondicionadoService.listarPorGrado(grado));
         return "/docente/condicionadosReportes";
     }
 

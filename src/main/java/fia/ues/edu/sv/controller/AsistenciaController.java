@@ -39,7 +39,6 @@ public class AsistenciaController {
         //System.out.println(authentication.getName());
         model.addAttribute("grados",gradoService.listarporDocente(1));
         model.addAttribute("periodos",periodoService.listarTodos());
-
         return "/docente/listaGradoAsistencia";
     }
 
