@@ -36,8 +36,8 @@ public class AsistenciaController {
 
     @RequestMapping("/listaGradoAsistencia")
     public String listarGrado(Model model, Authentication authentication){
-        System.out.println(authentication.getName());
-        model.addAttribute("grados",gradoService.listarporDocente(4));
+        //System.out.println(authentication.getName());
+        model.addAttribute("grados",gradoService.listarporDocente(1));
         model.addAttribute("periodos",periodoService.listarTodos());
 
         return "/docente/listaGradoAsistencia";
