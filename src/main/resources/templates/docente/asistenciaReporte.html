@@ -114,6 +114,9 @@
                                 <div sec:authorize="hasAuthority('Docente')">
                                     <div th:replace="/docente/menuDocente :: menu">   </div>
                                 </div>
+                                <div sec:authorize="hasAuthority('Directora')">
+                                    <div th:replace="/director/menuDirector :: menu">   </div>
+                                </div>
                                 <!-- END MEGA MENU -->
                             </div>
                         </div>
