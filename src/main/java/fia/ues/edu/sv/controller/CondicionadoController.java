@@ -37,4 +37,11 @@ public class CondicionadoController {
         return "/docente/listaAlumnoCondicionado";
     }
 
+
+    @RequestMapping("/listaAlumnoCondicionadoCor")
+    public String listarGradoCor(Model model){
+        model.addAttribute("grados",gradoService.listarTodos());
+        return "/coordinador/listaAlumnoCondicionadoCor";
+    }
+
 }

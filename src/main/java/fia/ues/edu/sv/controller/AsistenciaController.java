@@ -47,4 +47,12 @@ public class AsistenciaController {
        model.addAttribute("estudiantes",notaService.listaAsistencia(grado,periodo));
         return "/docente/asistenciaReporte";
     }
+
+    @RequestMapping("/listaGradoAsistenciaCor")
+    public String listarGradoCor(Model model, Authentication authentication){
+        //System.out.println(authentication.getName());
+        model.addAttribute("grados",gradoService.listarporDocente(1));
+        model.addAttribute("periodos",periodoService.listarTodos());
+        return "/coordinador/listaGradoAsistenciaCor";
+    }
 }

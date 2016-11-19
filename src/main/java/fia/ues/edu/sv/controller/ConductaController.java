@@ -40,5 +40,12 @@ public class ConductaController {
         return "/docente/conductaReporte";
     }
 
+    @RequestMapping("/listaAlumnoConductaCor")
+    public String listarGradoCor(Model model){
+        model.addAttribute("grados",gradoService.listarTodos());
+        model.addAttribute("periodos",periodoService.listarTodos());
+        return "/coordinador/listaAlumnoConductaCor";
+    }
+
 
 }
