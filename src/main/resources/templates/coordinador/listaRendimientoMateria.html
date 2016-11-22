@@ -3,7 +3,9 @@
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!-->
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <!--<![endif]-->
 <!-- BEGIN HEAD -->
 
@@ -103,7 +105,12 @@
                         <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
                         <!-- insertando menu -->
 
-                        <div th:replace="/coordinador/menuCoordinador :: menu">   </div>
+                        <div sec:authorize="hasAuthority('Coordinador')">
+                            <div th:replace="/coordinador/menuCoordinador :: menu">   </div>
+                        </div>
+                        <div sec:authorize="hasAuthority('Directora')">
+                            <div th:replace="/director/menuDirector :: menu">   </div>
+                        </div>
 
                         <!-- END MEGA MENU -->
                     </div>
@@ -154,7 +161,7 @@
                                     <div class="caption">
                                         <i class="icon-list font-red-sunglo"></i>
                                         <span class="caption-subject font-red-sunglo bold uppercase">Exonerados</span>
-                                        <span class="caption-helper">Seleccione un grado</span>
+                                        <span class="caption-helper">Seleccione un grado y materia</span>
                                     </div>
                                 </div>
                                 <div class="portlet-body form">

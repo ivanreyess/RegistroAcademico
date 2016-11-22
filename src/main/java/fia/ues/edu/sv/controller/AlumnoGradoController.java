@@ -33,4 +33,10 @@ public class AlumnoGradoController {
         model.addAttribute("estudiantes",estudianteService.listarTodos(id));
         return "/docente/alumnoGradoReporte";
     }
+
+    @RequestMapping("/listaAlumnoGradoCor")
+    public String listarGradoCor(Model model){
+        model.addAttribute("grados",gradoService.listarTodos());
+        return "/coordinador/listaAlumnoGradoCor";
+    }
 }

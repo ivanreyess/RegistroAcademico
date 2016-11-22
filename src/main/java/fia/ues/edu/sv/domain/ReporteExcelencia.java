@@ -3,6 +3,7 @@ package fia.ues.edu.sv.domain;
 import org.hibernate.annotations.Subselect;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.math.BigDecimal;
@@ -17,7 +18,9 @@ import java.math.BigDecimal;
         "\tDESCRIPCIONGRADO,\n" +
         "\tTRUNC(AVG(NOTAFINAL_MATERIA),2) AS NF_TODOSPERIODOS,\n" +
         "\tIDESTUDIANTE,\n" +
-        "\tNOMBREESTUDIANTE || ' ' ||APELLLIDOSESTUDIANTE AS ESTUDIANTE\n" +
+        "\tNOMBREESTUDIANTE || ' ' ||APELLLIDOSESTUDIANTE AS ESTUDIANTE,\n" +
+        "\tNOMBREMATERIA,\n" +
+        "\tIDMATERIA\n" +
         "\t\n" +
         "FROM (\n" +
         "--NOTAS FINALES POR GRADO Y MATERIA \n" +
@@ -42,10 +45,11 @@ import java.math.BigDecimal;
         "GROUP BY N.IDMATERIA, N.IDPERIODO,M.NOMBREMATERIA,NUMEROPERIODO,N.IDESTUDIANTE,E.IDGRADO,NOMBREESTUDIANTE,APELLLIDOSESTUDIANTE,GRADO,DESCRIPCIONGRADO\n" +
         "ORDER BY N.IDESTUDIANTE,IDPERIODO ASC\n" +
         ") A\n" +
-        "GROUP BY NOMBREESTUDIANTE||' ' ||APELLLIDOSESTUDIANTE,GRADO,IDGRADO,IDESTUDIANTE,DESCRIPCIONGRADO\n" +
+        "GROUP BY NOMBREESTUDIANTE||' ' ||APELLLIDOSESTUDIANTE,GRADO,IDGRADO,IDESTUDIANTE,DESCRIPCIONGRADO,NOMBREMATERIA,IDMATERIA \n" +
         "HAVING TRUNC(AVG(NOTAFINAL_MATERIA),2) >9.0")
-public class ReporteExcelencia {
-
+public class ReporteExcelencia implements java.io.Serializable {
+    @EmbeddedId
+    private MateriaEstudiante materiaEstudiante;
     @Column(name = "grado")
     String grado;
     @Column(name = "idgrado")
@@ -54,11 +58,11 @@ public class ReporteExcelencia {
     String descripciongrado;
     @Column(name = "nf_todosperiodos")
     BigDecimal nf_todosperiodos;
-    @Id
-    @Column(name = "idestudiante")
-    int idestudiante;
     @Column(name = "estudiante")
     String estudiante;
+    @Column(name ="nombremateria")
+    String materia;
+
 
     public ReporteExcelencia() {
     }
@@ -95,13 +99,6 @@ public class ReporteExcelencia {
         this.nf_todosperiodos = nf_todosperiodos;
     }
 
-    public int getIdestudiante() {
-        return idestudiante;
-    }
-
-    public void setIdestudiante(int idestudiante) {
-        this.idestudiante = idestudiante;
-    }
 
     public String getEstudiante() {
         return estudiante;
@@ -109,5 +106,21 @@ public class ReporteExcelencia {
 
     public void setEstudiante(String estudiante) {
         this.estudiante = estudiante;
+    }
+
+    public String getMateria() {
+        return materia;
+    }
+
+    public void setMateria(String materia) {
+        this.materia = materia;
+    }
+
+    public MateriaEstudiante getMateriaEstudiante() {
+        return materiaEstudiante;
+    }
+
+    public void setMateriaEstudiante(MateriaEstudiante materiaEstudiante) {
+        this.materiaEstudiante = materiaEstudiante;
     }
 }

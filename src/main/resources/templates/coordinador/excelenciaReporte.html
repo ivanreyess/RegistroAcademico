@@ -3,21 +3,19 @@
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!-->
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!--<![endif]-->
 <!-- BEGIN HEAD -->
 
 <head>
     <meta charset="utf-8" />
-    <title> Blank Page</title>
+    <title> Reporte de excelencia</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="" name="description" />
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=all" rel="stylesheet" type="text/css" />
-    <link href="../assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link th:href="@{/css/font-awesome/css/font-awesome.min.css}"  rel="stylesheet" type="text/css" />
     <link href="../assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
     <link href="../assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
@@ -28,7 +26,7 @@
     <!-- END PAGE LEVEL PLUGINS -->
     <!-- BEGIN THEME GLOBAL STYLES -->
     <link href="../assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
-    <link href="../assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
+    <link th:href="@{/css/plugins.min.css}" rel="stylesheet" type="text/css" />
     <!-- END THEME GLOBAL STYLES -->
     <!-- BEGIN THEME LAYOUT STYLES -->
     <link href="../assets/layouts/layout3/css/layout.min.css" rel="stylesheet" type="text/css" />
@@ -108,15 +106,10 @@
                         <!-- BEGIN MEGA MENU -->
                         <!-- DOC: Apply "hor-menu-light" class after the "hor-menu" class below to have a horizontal menu with white background -->
                         <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
-                        <div sec:authorize="hasAuthority('Coordinador')">
-                            <div th:replace="/coordinador/menuCoordinador :: menu">   </div>
-                        </div>
-                        <div sec:authorize="hasAuthority('Docente')">
-                            <div th:replace="/docente/menuDocente :: menu">   </div>
-                        </div>
-                        <div sec:authorize="hasAuthority('Directora')">
-                            <div th:replace="/director/menuDirector :: menu">   </div>
-                        </div>
+                        <!-- insertando el menú  -->
+                        <div th:replace="/coordinador/menuCoordinador :: menu">   </div>
+
+
                         <!-- END MEGA MENU -->
                     </div>
                 </div>
@@ -137,7 +130,7 @@
                         <div class="container">
                             <!-- BEGIN PAGE TITLE -->
                             <div class="page-title">
-                                <h1>Lista de asistencia </h1>
+                                <h1>Alumnos Exonerados </h1>
                             </div>
                             <!-- END PAGE TITLE -->
                             <!-- BEGIN PAGE TOOLBAR -->
@@ -165,26 +158,32 @@
                                 <div class="portlet box green">
                                     <div class="portlet-title">
                                         <div class="caption">
-                                            <i class="fa fa-list"></i>Asistencia </div>
+                                            <i class="fa fa-list"></i>Exonerados </div>
                                         <div class="tools"> </div>
                                     </div>
+
                                     <div class="portlet-body">
                                         <table class="table table-striped table-bordered table-hover" id="sample_2">
                                             <thead>
                                             <tr>
-                                                <th>Nombres</th>
-                                                <th>Apellidos</th>
-                                                <th>Conducta</th>                                                                                                                                   </tr>
+                                                <th>ID</th>
+                                                <th>Estudiante</th>
+                                                <th>Materia</th>
+                                                <th>Promedio Exonerado</th>
+                                            </tr>
                                             </thead>
                                             <tbody>
-                                            <tr th:each="e : ${estudiantes}">
-                                                <td th:text="${e.nombre}"></td>
-                                                <td th:text="${e.apellido}"></td>
-                                                <td th:text="${e.calificacion}"></td>
+                                            <tr th:each="e : ${excelencia}">
+                                                <td th:text="${e.materiaEstudiante.idestudiante}"></td>
+                                                <td th:text="${e.estudiante}"></td>
+                                                <td th:text="${e.materia}"></td>
+                                                <td th:text="${e.nf_todosperiodos}"></td>
+
                                             </tr>
                                             </tbody>
                                         </table>
                                     </div>
+
                                 </div>
                             </div>
                             <!-- END PAGE CONTENT INNER -->

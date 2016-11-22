@@ -3,13 +3,16 @@
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!-->
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
 <!--<![endif]-->
 <!-- BEGIN HEAD -->
 
 <head>
     <meta charset="utf-8" />
-    <title>Reporte de asistencia</title>
+    <title>Reporte de examen de recuperación</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="" name="description" />
@@ -101,7 +104,12 @@
                         <!-- BEGIN MEGA MENU -->
                         <!-- DOC: Apply "hor-menu-light" class after the "hor-menu" class below to have a horizontal menu with white background -->
                         <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
-                        <div th:replace="/docente/menuDocente :: menu">   </div>
+                        <div sec:authorize="hasAuthority('Coordinador')">
+                            <div th:replace="/coordinador/menuCoordinador :: menu">   </div>
+                        </div>
+                        <div sec:authorize="hasAuthority('Docente')">
+                            <div th:replace="/docente/menuDocente :: menu">   </div>
+                        </div>
                         <!-- END MEGA MENU -->
                     </div>
                 </div>
@@ -122,7 +130,7 @@
                         <div class="container">
                             <!-- BEGIN PAGE TITLE -->
                             <div class="page-title">
-                                <h1>Reporte de asistencia </h1>
+                                <h1>Reporte de examen de recuperación </h1>
                             </div>
                             <!-- END PAGE TITLE -->
                             <!-- BEGIN PAGE TOOLBAR -->
@@ -141,7 +149,7 @@
                                     <i class="fa fa-circle"></i>
                                 </li>
                                 <li>
-                                    <span>Reporte de asistencia</span>
+                                    <span>Reporte de examen de recuperación </span>
                                 </li>
                             </ul>
                             <!-- END PAGE BREADCRUMBS -->
@@ -150,13 +158,13 @@
                                 <div class="portlet-title">
                                     <div class="caption">
                                         <i class="icon-list font-red-sunglo"></i>
-                                        <span class="caption-subject font-red-sunglo bold uppercase">Asistencia</span>
-                                        <span class="caption-helper">Seleccione un grado</span>
+                                        <span class="caption-subject font-red-sunglo bold uppercase">Recuperación</span>
+                                        <span class="caption-helper">Seleccione un grado y un periodo</span>
                                     </div>
                                 </div>
                                 <div class="portlet-body form">
                                     <!-- BEGIN FORM-->
-                                    <form th:action="@{/asistenciaReporte}" class="form-horizontal" method="get">
+                                    <form th:action="@{/recuperacionReporte}" class="form-horizontal" method="get">
                                         <div class="form-body">
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label">Grado</label>
@@ -164,17 +172,6 @@
                                                     <div class="col-md-4">
                                                         <select class="form-control" name="grado">
                                                             <option th:each="g : ${grados}" th:value="${g.idgrado}" th:text="${g.descripciongrado}"></option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label">Periodo</label>
-                                                <div th:if="${not #lists.isEmpty(periodos)}">
-                                                    <div class="col-md-4">
-                                                        <select class="form-control" name="periodo">
-                                                            <option th:each="p : ${periodos}" th:value="${p.idperiodo}" th:text="${p.mes + ' ' +
-                                                             p.ano + ' Periodo ' + #numbers.formatInteger(p.numeroperiodo,1)}"></option>
                                                         </select>
                                                     </div>
                                                 </div>

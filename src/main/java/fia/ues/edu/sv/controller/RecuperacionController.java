@@ -29,7 +29,19 @@ public class RecuperacionController {
     public String listarGrado(Model model, Authentication authentication){
         //System.out.println(authentication.getName());
         model.addAttribute("grados",gradoService.listarporDocente(1));
-        model.addAttribute("periodos",periodoService.listarTodos());
         return "/docente/listaAlumnoRecuperacion";
+    }
+
+    @RequestMapping("/recuperacionReporte")
+    public String reporteRecuperacion(Model model, @RequestParam Integer grado){
+        model.addAttribute("recuperacion",reporteRecuperacionService.listarPorGrado(grado));
+        return "/docente/recuperacionReporte";
+    }
+
+    @RequestMapping("/listaAlumnoRecuperacionCor")
+    public String listarGradoCor(Model model, Authentication authentication){
+        //System.out.println(authentication.getName());
+        model.addAttribute("grados",gradoService.listarTodos());
+        return "/coordinador/listaAlumnoRecuperacionCor";
     }
 }
