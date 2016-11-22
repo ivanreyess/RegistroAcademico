@@ -20,4 +20,15 @@ public interface EstudianteRepository extends JpaRepository<Estudiante,Integer> 
           " JOIN grado G ON G.idgrado = e.idgrado AND G.idgrado =?1", nativeQuery =true)
     List<Estudiante> queryByGrado(int idGrado);
 
+    @Query(value = "SELECT  e.idestudiante,e.idgrado,e.nie, e.nombreestudiante , e.apelllidosestudiante" +
+            " FROM ESTUDIANTE E  WHERE  IDESTUDIANTE NOT IN \n" +
+            "(\n" +
+            "SELECT IDESTUDIANTE FROM NOTA N WHERE IDMATERIA=?1 AND IDPERIODO=?2 " +
+            "GROUP BY  IDESTUDIANTE HAVING COUNT(IDACTIVIDADES)=\n" +
+            "(SELECT  DISTINCT CASE WHEN IDMATERIA>=1 THEN 1 \n" +
+            "ELSE 5 END CONTADOR FROM NOTA WHERE IDMATERIA=?3)\n" +
+            " ) \n" +
+            "AND IDGRADO=?4",nativeQuery = true)
+    List<Estudiante> queryByExistenciaNota(int idmateria,int idperiodo, int idmateria2,int idgrado);
+
 }

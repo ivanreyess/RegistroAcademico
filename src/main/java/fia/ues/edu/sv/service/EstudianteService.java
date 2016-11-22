@@ -38,4 +38,9 @@ public class EstudianteService {
     public List<Estudiante> listarTodos(int idGrado){
         return estudianteRepository.queryByGrado(idGrado);
     }
+
+    @Transactional
+    public  List<Estudiante>  existenciaNotas(int idmateria,int idperiodo, int idmateria2,int idgrado){
+        return estudianteRepository.queryByExistenciaNota(idmateria,idperiodo,idmateria2,idgrado);
+    }
 }

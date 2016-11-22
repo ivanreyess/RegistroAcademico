@@ -20,4 +20,7 @@ public class PeriodoService {
     public List<Periodo> listarTodos(){
         return periodoRepository.findAll();
     }
+
+    @Transactional
+    public List<Periodo> listarPorId(int idperiodo){ return periodoRepository.findByidperiodo(idperiodo);}
 }

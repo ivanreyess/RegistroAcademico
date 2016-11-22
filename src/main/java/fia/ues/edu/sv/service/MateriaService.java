@@ -1,6 +1,7 @@
 package fia.ues.edu.sv.service;
 
 import fia.ues.edu.sv.domain.Materia;
+import fia.ues.edu.sv.domain.IngresoNota;
 import fia.ues.edu.sv.repository.MateriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,13 +15,17 @@ import java.util.List;
 @Service
 public class MateriaService {
     @Autowired
-    MateriaRepository notaRepository;
+    MateriaRepository materiaRepository;
 
 
     @Transactional
 
     public List<Materia> listarTodas(){
-        return notaRepository.findAll();
+        return materiaRepository.findAll();
+    }
+
+    @Transactional
+    public List<Materia> listarPorDocente(int idDocente){return materiaRepository.queryByDocente(idDocente);
     }
 
 }
