@@ -167,27 +167,30 @@
                                 <div class="portlet-body form">
                                     <!-- BEGIN FORM-->
 
-                                    <form th:action="@{/exoneracionReporte}" class="form-horizontal" method="get">
+                                    <form th:action="@{/rendimientoReporte}" class="form-horizontal" method="get">
                                         <div class="form-body">
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label">Grados</label>
-                                                <div th:if="${not #lists.isEmpty(lgrados)}">
+                                                <div th:if="${not #lists.isEmpty(grados)}">
                                                     <div class="col-md-4">
-                                                        <select class="form-control" name="id">
-                                                            <option th:each="g : ${lgrados}" th:value="${g.idgrado}" th:text="${g.descripciongrado}"></option>
+                                                        <select class="form-control" name="grado">
+                                                            <option th:each="g : ${grados}" th:value="${g.idgrado}" th:text="${g.descripciongrado}"></option>
                                                         </select>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label">Materia</label>
-                                                <div th:if="${not #lists.isEmpty(materia)}">
+                                                <label class="col-md-3 control-label">Periodo</label>
+
                                                     <div class="col-md-4">
-                                                        <select class="form-control" name="materia">
-                                                            <option th:each="m : ${materia}" th:value="${m.nombremateria}" th:text="${m.nombremateria}"></option>
+                                                        <select class="form-control" name="periodo">
+                                                            <option value="1">Primer Periodo</option>
+                                                            <option value="2">Segundo Periodo</option>
+                                                            <option value="3">Tercer Periodo</option>
+                                                            <option value="4">Cuarto Periodo</option>
                                                         </select>
                                                     </div>
-                                                </div>
+
                                             </div>
                                         </div>
                                         <div class="form-actions">
