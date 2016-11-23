@@ -27,5 +27,7 @@ public class MateriaService {
     @Transactional
     public List<Materia> listarPorDocente(int idDocente){return materiaRepository.queryByDocente(idDocente);
     }
+    @Transactional
+    public Materia guardarMateria(Materia materia){ return materiaRepository.save(materia);}
 
 }

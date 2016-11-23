@@ -47,5 +47,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
         registry.addViewController("/registroNotas").setViewName("/docente/registroNotas");
         registry.addViewController("/calificacionesTabla").setViewName("/docente/calificacionesTabla");
 
+        registry.addViewController("/docenteMateria").setViewName("/coordinador/docenteMateria");
+
     }
 }
