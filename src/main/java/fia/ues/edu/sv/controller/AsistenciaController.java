@@ -1,9 +1,7 @@
 package fia.ues.edu.sv.controller;
 
-import fia.ues.edu.sv.service.EstudianteService;
-import fia.ues.edu.sv.service.GradoService;
-import fia.ues.edu.sv.service.NotaService;
-import fia.ues.edu.sv.service.PeriodoService;
+import fia.ues.edu.sv.domain.Docente;
+import fia.ues.edu.sv.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -32,11 +30,14 @@ public class AsistenciaController {
     @Autowired
     NotaService notaService;
 
+    @Autowired
+    DocenteService docenteService;
 
 
     @RequestMapping("/listaGradoAsistencia")
     public String listarGrado(Model model, Authentication authentication){
-        //System.out.println(authentication.getName());
+        Docente docente = docenteService.obtenerPorUsuario(authentication.getName());
+        System.out.println(docente.getNombredocente());
         model.addAttribute("grados",gradoService.listarporDocente(1));
         model.addAttribute("periodos",periodoService.listarTodos());
         return "/docente/listaGradoAsistencia";
