@@ -19,16 +19,16 @@ public class DocenteService {
     DocenteRepository docenteRepository;
 
     @Transactional
-<<<<<<< HEAD
-    public Docente obtenerPorUsuario(String usuario){
+
+    public Docente obtenerPorUsuario(String usuario) {
         return docenteRepository.queryByUsuario(usuario);
-=======
+    }
     public Docente guardarDocente(Docente docente){
         return docenteRepository.save(docente);
     }
     @Transactional
     public int ultimoDocente(){
         return docenteRepository.queryLastDocente();
->>>>>>> 2a335c9548e4da06f65cde4bc1f6accb549da45b
+
     }
 }
